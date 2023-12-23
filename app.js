@@ -8,17 +8,17 @@ app.use(cors());
 
 // routes
 const productRoute = require("./route/product.route");
-const categoryRoute = require("./route/category.route");
+
 const cartRoute = require("./route/cart.route");
 const userRoute = require("./route/user.route");
 
 app.use("/api/product", productRoute);
-app.use("/api/category", categoryRoute);
+
 app.use("/api/cart", cartRoute);
 app.use("/api/user", userRoute);
 
 app.get("/", (req, res) => {
-  res.send("Route is working! YaY!");
+  res.send("Route is working!");
 });
 app.use((err, req, res, next) => {
   if (err.message) {

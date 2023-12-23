@@ -7,11 +7,6 @@ router
   .get(productController.getProducts)
   .post(productController.createProduct);
 
-router.route("/:id").patch(productController.updateProduct);
-router
-  .route("/:id")
-  .get(productController.getProductsDetails)
-  // router.route('/').get(productController.getAllProductsManage)
-  .delete(productController.deleteProduct);
+router.route("/:id").get(productController.getProductsDetails);
 
 module.exports = router;
