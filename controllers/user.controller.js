@@ -2,8 +2,6 @@ require("dotenv").config();
 const User = require("../models/User");
 const { generateToken } = require("../utilis/token");
 
-const bcrypt = require("bcryptjs");
-
 exports.createUser = async (req, res) => {
   try {
     const email = req.body.email;

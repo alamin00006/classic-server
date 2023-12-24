@@ -2,6 +2,15 @@ const Cart = require("../models/Cart");
 
 exports.createCart = async (req, res) => {
   try {
+    const carts = await Cart.findOne({ productId: req?.body?.productId });
+    console.log(carts);
+    if (carts) {
+      return res.status(400).json({
+        status: "failed",
+        message: "Sorry! Already Added to Cart",
+      });
+    }
+
     const cart = new Cart(req.body);
     const result = await cart.save();
 
@@ -19,9 +28,12 @@ exports.createCart = async (req, res) => {
   }
 };
 
-exports.getCart = async (req, res) => {
+exports.getUserCart = async (req, res) => {
   try {
-    const carts = await Cart.find({});
+    const user = req.params.user;
+    console.log(user);
+    const carts = await Cart.find({ userId: user });
+
     res.status(200).json({
       status: "success",
       message: "data get Success",
